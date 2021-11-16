@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C/DTD HTML 4.01"><html><head><title>操作履歴削除</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><link rel="stylesheet" type="text/css" href="./list_css.css"><link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+			<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+			<link rel="stylesheet" href="./jquery.datetimepicker.css">
+			<link rel="stylesheet" href="./MonthPicker.css"><link rel="stylesheet" type="text/css" href="./list_css.css"><!---↓jQuery---!>
+			<script src="./jquery.js"></script>
+			<script src="./jquery.datetimepicker.full.min.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+			<!---↑jQuery---!>
+			<script src="./MonthPicker.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/i18n/jquery.spectrum-ja.min.js"></script>
+			<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+			<script src="./inputcheck.js"></script>
+			<script src="./generate_date.js"></script>
+			<script src="./pulldown.js"></script>
+			<script src="./jquery.corner.js"></script>
+			<script src="./list_jQuery.js"></script>
+			<script src="./tabscript.js"></script>
+			<script src="./hm_hinmoku.js"></script><script language="JavaScript"><!--
+			//history.forward();
+			var isCancel = false;
+			$(function()
+			{
+				//$(".button").corner();
+				//$(".free").corner();
+				
+				
+				$("input").blur(function()
+				{
+					var idx = this.name.lastIndexOf( "_0_" );
+					if(idx !== -1)
+					{
+						var poststr = this.name.substr(idx);
+						calculateKingaku( poststr );
+					}
+				});
+
+				makeDatepicker();
+			});
+			--></script><script language="JavaScript"><!--
+				function switchAction( page_id ){
+					$("form").attr("action", page_id);
+					$("form").submit();
+				}
+				--></script></head><body><div class="titlebox" id="print"><div class="main_title"><h1>見積・請求システム for J-Frontier</h1></div><div class="mlogo"><img src="./image/mlogo.gif" class="m_logo"></div></div><div class="pkg_contents" id="print">
+				<div class="main_menu">   <div id="contents" class="content" >
+  <ul class="nav">
+  <li><a href="main.php?TOP_5">TOP</a></li>
+<li class='sub-menu'><a href="#">案件情報</a>
+<ul>
+<li><a href="main.php?ANKENINFO_1_button=%E6%A1%88%E4%BB%B6%E6%83%85%E5%A0%B1%E7%99%BB%E9%8C%B2">案件情報登録</a></li>
+<li><a href="main.php?ANKENINFO_2_button=%E6%A1%88%E4%BB%B6%E4%B8%80%E8%A6%A7">案件一覧</a></li>
+<li><a href="main.php?MITSUMORIINFO_1_button=%E8%A6%8B%E7%A9%8D%E3%82%8A%E6%9B%B8%E7%99%BB%E9%8C%B2">見積り書登録</a></li>
+<li><a href="main.php?SEIKYUINFO_1_button=%E8%AB%8B%E6%B1%82%E6%9B%B8%E7%99%BB%E9%8C%B2">請求書登録</a></li>
+</ul>
+</li>
+<li class='sub-menu'><a href="#">データ参照</a>
+<ul>
+<li><a href="main.php?MISEIKYUINFO_2_button=%E8%AB%8B%E6%B1%82%E6%9B%B8%E6%9C%AA%E7%99%BA%E8%A1%8C%E6%83%85%E5%A0%B1">請求書未発行情報</a></li>
+<li><a href="main.php?MINYUKININFO_2_button=%E6%9C%AA%E5%85%A5%E9%87%91%E6%83%85%E5%A0%B1">未入金情報</a></li>
+<li><a href="main.php?URIAGEPRINT_6_button=%E5%A3%B2%E4%B8%8A%E7%AE%A1%E7%90%86%E8%A1%A8">売上管理表</a></li>
+<li><a href="main.php?NYUKINPRINT_6_button=%E5%85%A5%E9%87%91%E7%AE%A1%E7%90%86%E8%A1%A8">入金管理表</a></li>
+</ul>
+</li>
+<li class='sub-menu'><a href="#">マスタ管理</a>
+<ul>
+<li><a href="main.php?JISYAMASTER_3_button=%E8%87%AA%E7%A4%BE%E3%83%9E%E3%82%B9%E3%82%BF">自社マスタ</a></li>
+<li><a href="main.php?USERMASTER_2_button=%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%9E%E3%82%B9%E3%82%BF">ユーザーマスタ</a></li>
+<li><a href="main.php?KOKYAKUMASTER_2_button=%E9%A1%A7%E5%AE%A2%E3%83%9E%E3%82%B9%E3%82%BF">顧客マスタ</a></li>
+<li><a href="main.php?HINMOKUMASTER_2_button=%E8%A6%8B%E7%A9%8D%E6%98%8E%E7%B4%B0%E3%83%9E%E3%82%B9%E3%82%BF">見積明細マスタ</a></li>
+</ul>
+</li>
+<li class='sub-menu'><a href="#">システム情報</a>
+<ul>
+<li><a href="main.php?SOUSALIST_2_button=%E6%93%8D%E4%BD%9C%E5%B1%A5%E6%AD%B4">操作履歴</a></li>
+<li><a href="main.php?RIREKIDEL_6_button=%E5%B1%A5%E6%AD%B4%E3%83%87%E3%83%BC%E3%82%BF%E5%89%8A%E9%99%A4">履歴データ削除</a></li>
+</ul>
+</li>
+  <li><a href="login.php">ログアウト</a></li>
+   <!--nav--></ul>
+  </div></div></div><div class = "center"><a class = "title_edit">操作履歴削除</a></div><br><form name ="print" id ="print" action="main.php?RIREKIDEL_6_button=" method="post" enctype="multipart/form-data" 
+				onsubmit = "return check('form_ssrUPDATETIME_0~16~5~1~2','ssrUPDATETIME','4');"><div class = "edit_table"><table><tr><td><table name ="formedit" id ="edit"><tr><td class = "space"></td><td class ="one"><a class = "itemname">操作日時</a></td><td class = "two"><input type ="text" name = "form_ssrUPDATETIME_0" id = "form_ssrUPDATETIME_0" class = "" value = "2019/04/17 20:06:43" size = "18"   ></td></td></table></td><td><button type="button" name = "execute" onclick="switchAction( 'main.php?RIREKIDEL_9_button=' );" class="free">処理実行</button></td></tr></table></div></form><div id="dialog" title="入力確認" style="display:none;">
+					<p>この内容でよろしいでしょうか？</p>
+					</div></div></form></body><script language="JavaScript"> $("#contents .sub-menu > a").click(function (e) {
+					$("#contents ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
+					e.stopPropagation();
+				});function makeDatepicker()
+			{$('#form_ssrUPDATETIME_0').datetimepicker();}
+				</script></html>
