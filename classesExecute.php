@@ -334,11 +334,17 @@ class MitsumoriInfoExecuter extends BaseLogicExecuter
 				break;
 			}
 			//見積登録,更新時
-			if($filearray[0] == "MITSUMORIINFO")
+			if($filearray[0] == "MITSUMORIINFO" || $filearray[0] == "MITSUMORIPRINT")
 			{
 				$filename = "ANKENSHOW_1";
 				$step = 2;
 				$id = $this->prContainer->pbInputContent['form_mmhANKID_0'];
+                                
+                                if(isset($_GET['Comp']) && $_GET['Comp'] == '1')
+                                {
+                                        $filename = "MITSUMORIINFO_1";
+                                        $id = $_POST['form_mmhMMHID_0'];
+                                }
                                 
                                 if($_SESSION['filename'] === "MITSUMORIPRINT_5")
                                 {
@@ -350,11 +356,17 @@ class MitsumoriInfoExecuter extends BaseLogicExecuter
 				break;
 			}	
 			//請求登録,更新時
-			if($filearray[0] == "SEIKYUINFO")
+			if($filearray[0] == "SEIKYUINFO" || $filearray[0] == "SEIKYUPRINT")
 			{
 				$filename = "ANKENSHOW_1";
 				$step = 2;
 				$id = $this->prContainer->pbInputContent['form_sehANKID_0'];
+                                
+                                if(isset($_GET['Comp']) && $_GET['Comp'] == '1')
+                                {
+                                        $filename = "SEIKYUINFO_1";
+                                        $id = $_POST['form_sehSEHID_0'];
+                                }
                                 
                                 if($_SESSION['filename'] === "SEIKYUPRINT_5")
                                 {
